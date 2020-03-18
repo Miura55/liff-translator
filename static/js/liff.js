@@ -31,7 +31,7 @@ function initializeLiff(myLiffId) {
 }
 // メッセージの送信
 $(function() {
-    $('#button').click(function(e) {
+    $('#en').click(function(e) {
         e.preventDefault();
         var val = $('#origin-lang').val();
         console.log(val);
