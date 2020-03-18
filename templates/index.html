@@ -13,22 +13,22 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <button id="en" type="button" class="btn btn-primary btn-lg btn-block">英語</button>
+                        <button id="button" type="button" class="btn btn-primary btn-lg btn-block">英語</button>
                     </div>
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-danger btn-lg btn-block">中国語</button>
+                        <button id="button" type="button" class="btn btn-danger btn-lg btn-block">中国語</button>
                     </div>
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-secondary btn-lg btn-block">韓国語</button>
+                        <button id="button" type="button" class="btn btn-secondary btn-lg btn-block">韓国語</button>
                     </div>
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-info btn-lg btn-block">フランス語</button>
+                        <button id="button" type="button" class="btn btn-info btn-lg btn-block">フランス語</button>
                     </div>
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-warning btn-lg btn-block">ドイツ語</button>
+                        <button id="button" type="button" class="btn btn-warning btn-lg btn-block">ドイツ語</button>
                     </div>
                     <div class="col-md-4">
-                        <button type="button" class="btn btn-success btn-lg btn-block">イタリア語</button>
+                        <button id="button" type="button" class="btn btn-success btn-lg btn-block">イタリア語</button>
                     </div>
                 </div>
             </div>
@@ -41,62 +41,6 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <!-- load LIFF SDK -->
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
-        <script >
-            document.getElementById("logout").style.display ="none";
-            window.onload = function() {
-                initializeLiff("1653968311-XB19ZjVO");
-            };
-
-            function initializeLiff(myLiffId) {
-                liff
-                    .init({
-                        liffId: myLiffId
-                    })
-                    .then(() => {
-                        //LINEアプリで起動しているかどうかとログインをしているのかを判断している
-                        if (!liff.isInClient() && !liff.isLoggedIn()){
-                            window.alert("LINEアカウントにログインしてください。");
-                            liff.login();
-                        }else{
-                            // start to use LIFF's api
-                            liff.getProfile().then(function(profile) {
-                                if (!liff.isInClient()){
-                                    document.getElementById("logout").style.display = "block"
-                                }
-                            }).catch(function(error) {
-                                window.alert('Error getting profile: ' + error);
-                            })
-                        }
-
-                    })
-                    .catch((err) => {
-                        document.getElementById('displaynamefield').textContent = err;
-                    });
-            }
-            // メッセージの送信
-            $(function() {
-                $('#en').click(function(e) {
-                    e.preventDefault();
-                    var val = $('#origin-lang').val();
-                    console.log(val);
-                    liff.shareTargetPicker([
-                            {
-                                type: "text",
-                                text: val
-                            }
-                        ])
-                        .then(
-                            alert("メッセージを送信しました")
-                        ).catch(function(res) {
-                            alert("送信に失敗しました")
-                        })
-                });
-            });
-            // ログアウトの処理
-            function LogoutAction(){
-                liff.logout();
-                window.location.reload();
-            }
-        </script>
+        <script src="/static/js/liff.js"></script>
     </body>
 </html>
