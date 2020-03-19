@@ -36,18 +36,34 @@ $(function() {
         var val = $('#origin-lang').val();
         var click =  $(this).data('id');
         console.log(val);
-        console.log(click)
-        liff.shareTargetPicker([
-                {
-                    type: "text",
-                    text: val
-                }
-            ])
-            .then(
-                alert("メッセージを送信しました")
-            ).catch(function(res) {
-                alert("送信に失敗しました")
-            })
+        console.log(click);
+        var req_body = {
+            lang:click,
+            user_say:val
+        }
+        $.ajax({
+            type:"POST",
+            url:"/translate",
+            data:req_body,
+            success: function(res, status){
+                liff.shareTargetPicker([
+                    {
+                        type: "text",
+                        text: res.translated
+                    }
+                ])
+                .then(
+                    alert("メッセージを送信しました")
+                )
+                .catch(function(res) {
+                    alert("送信に失敗しました")
+                })
+            },
+            error: function(){
+                console.log("error");
+            }
+        })
+        
     });
 });
 // ログアウトの処理
