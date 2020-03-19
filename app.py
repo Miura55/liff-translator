@@ -3,8 +3,11 @@ from flask import Flask, render_template, request, jsonify
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from dotenv import load_dotenv
- 
-load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+
+try:
+    load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
+except:
+    pass
 
 authenticator = IAMAuthenticator(os.environ["TRANSLATE_API_KEY"])
 language_translator = LanguageTranslatorV3(
