@@ -1,6 +1,7 @@
 document.getElementById("logout").style.display ="none";
 window.onload = function() {
     initializeLiff("1653968311-XB19ZjVO");
+    // initializeLiff("1653968311-JbOa6XNl");  //test
 };
 
 function initializeLiff(myLiffId) {
