@@ -54,7 +54,7 @@ $(function() {
                     }
                 ])
                 .then(
-                    alert("メッセージを送信しました")
+                    alert("メッセージを送信します")
                 )
                 .catch(function(res) {
                     alert("送信に失敗しました")
