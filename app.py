@@ -38,7 +38,7 @@ def translate():
 
     if lang_tag != "en":
         translation = language_translator.translate(
-            text=user_say,
+            text=result,
             source="en", 
             target=lang_tag).get_result()
         result = translation["translations"][0]["translation"]
