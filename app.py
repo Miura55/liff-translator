@@ -21,7 +21,8 @@ app = Flask(__name__, static_folder='static')
 
 @app.route("/")
 def main():
-    return render_template("index.html")
+    liff_id = os.environ["LIFF_ID"]
+    return render_template("index.html", liff_id=liff_id)
 
 @app.route("/translate", methods=["POST"])
 def translate():

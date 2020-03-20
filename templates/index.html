@@ -44,6 +44,14 @@
         <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
         <!-- load LIFF SDK -->
         <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+        <script>
+            var liff_id = {{liff_id|tojson}};
+            console.log(liff_id);
+            document.getElementById("logout").style.display ="none";
+            window.onload = function() {
+                initializeLiff(liff_id);
+            };
+        </script>
         <script src="/static/js/liff.js"></script>
     </body>
 </html>
